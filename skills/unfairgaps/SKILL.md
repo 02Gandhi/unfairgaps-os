@@ -154,6 +154,7 @@ For each candidate pattern, emit an `UNFAIRGAP` entry:
     who_pays: "<specific buyer persona — NOT the sanctioned companies, their NOT-YET-SANCTIONED peers>"
     why_now: "<what makes this urgent in 2024-2026 specifically>"
     what_kills_it: "<biggest risk to the wedge>"
+    solo_founder_fit: "PASS | FAIL | MARGINAL — see Phase 3.7 criteria"
   coverage_caveats: "<what we don't know that would change the call>"
 ```
 
@@ -167,6 +168,38 @@ For each candidate pattern, emit an `UNFAIRGAP` entry:
 **Drop-rule:** events that don't slot into any unfairgap pattern don't appear in Phase 4 main topics. They go to an "Anecdotal signals" appendix only.
 
 **Target:** 3-5 CONFIRMED_SYSTEMIC unfairgaps per run. If you have 0-2, the run didn't find a pattern — say so in the report, don't pad.
+
+## Phase 3.7 — Solo-Founder Filter (mandatory)
+
+After Phase 3.5, score every CONFIRMED_SYSTEMIC and EMERGING_PATTERN gap against these criteria. This step is **non-negotiable** — it runs even if the user didn't ask for it.
+
+### SOLO_FIT: PASS — ALL of the following must be true:
+1. **Buildable alone:** Core MVP buildable by 1 full-stack engineer without co-founders, domain-licensed professionals (lawyers, doctors, financial advisors), or specialized hardware.
+2. **First customer under €5K:** Total spend to get first paying customer (infra + tools + legal minimum + outbound) ≤ €5,000. Does NOT include time cost.
+3. **No complex architecture:** MVP does not require: ML model training from scratch, real-time distributed systems across >2 jurisdictions, multi-regulatory compliance infrastructure on day 1, or institutional data partnerships mandatory before launch.
+4. **Sales cycle reachable solo:** First paying customer achievable via direct outbound email/LinkedIn or inbound SEO — no mandatory 12-month enterprise procurement in year 1.
+
+### SOLO_FIT: FAIL — ANY of the following:
+- Requires 2+ co-founders from day 1 (e.g., mandatory lawyer + engineer combo on the product itself)
+- Builder needs a regulatory license to operate (financial advisory, pharmaceutical, legal practice)
+- MVP infra/data/legal cost exceeds €5,000 before first revenue
+- Core differentiation requires PhD-level research or >6 months of domain-specific institutional knowledge
+- Minimum viable sales motion requires enterprise procurement (RFP, legal review, security audit) unavoidable in year 1
+
+### SOLO_FIT: MARGINAL — passes 3/4 criteria; flag explicitly with which criterion is borderline.
+
+### Output of Phase 3.7:
+For each gap, emit one line:
+```
+ug_XXX  SOLO_FIT: PASS|FAIL|MARGINAL  [reason if FAIL/MARGINAL]
+```
+
+**Routing rule:**
+- `PASS` → gap stays in main "Unfairgaps Found" section
+- `FAIL` → gap moves to "Out of Scope for Solo Founder" appendix (still reported, clearly flagged)
+- `MARGINAL` → stays in main section with a visible ⚠️ MARGINAL note inside the product sketch
+
+---
 
 ## Phase 4 — Final report
 
@@ -193,6 +226,7 @@ Save under an op-specific filename (see reference).
 7. **PDF handling:** If WebFetch on a .gov/court PDF returns "cannot parse binary content," the PDF is cached to the tool-results path returned. Use Read tool on that cache path — it extracts full document content. Treat as canonical PDF workflow.
 8. **Blocked primary sources:** Some regulator domains (osha.gov, dir.ca.gov) return HTTP 403 or timeout on direct WebFetch. When this happens: (a) search for `aggregator_primary` sites that cite the same release verbatim; (b) preserve the canonical `event_key` so evidence from the aggregator merges with the primary when reachable later. Do NOT drop the event.
 9. **CONFIRMED_SYSTEMIC requires ≥3 events + ≥2 companies.** Non-negotiable. 1-event "opportunity" in the main section = skill failure.
+10. **Solo-founder filter is mandatory.** A gap with `SOLO_FIT: FAIL` in the main "Unfairgaps Found" section = skill failure. Move it to the appendix. Never skip Phase 3.7.
 
 ---
 
