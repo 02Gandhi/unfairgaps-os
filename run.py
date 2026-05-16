@@ -21,7 +21,7 @@ SONAR_URL = "https://api.perplexity.ai/chat/completions"
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 
 CLAUDE_MODEL = "anthropic/claude-sonnet-4-6"
-SONAR_MODEL = "sonar-reasoning-pro"
+SONAR_MODEL = "sonar-deep-research"
 
 COUNTRY_NAMES = {
     "US": "United States", "DE": "Germany", "KZ": "Kazakhstan", "RU": "Russia",
@@ -124,7 +124,7 @@ def call_claude(system: str, user: str, max_tokens: int = 2000, temp: float = 0.
     return extract_text(data)
 
 
-def call_sonar(system: str, user: str, max_tokens: int = 3000) -> dict:
+def call_sonar(system: str, user: str, max_tokens: int = 8000) -> dict:
     """Call Sonar via Perplexity Chat Completions. Returns {text, citations}."""
     r = httpx.post(
         SONAR_URL,
@@ -133,7 +133,7 @@ def call_sonar(system: str, user: str, max_tokens: int = 3000) -> dict:
             {"role": "system", "content": system},
             {"role": "user", "content": user},
         ], "max_tokens": max_tokens, "return_citations": True},
-        timeout=120,
+        timeout=300,
     )
     r.raise_for_status()
     data = r.json()
