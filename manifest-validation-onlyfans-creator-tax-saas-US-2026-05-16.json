@@ -1,0 +1,110 @@
+{
+  "operation": "validate-idea",
+  "input": "tax compliance SaaS for OnlyFans creators / US",
+  "date": "2026-05-16",
+  "skill_version": "0.5.0",
+  "search_window": "2025-10-16 to 2026-05-16 (7 months)",
+  "verdict": "PROMISING",
+  "verdict_reasoning": "Pain is confirmed systemic (3 named prosecutions, 4 jurisdictions, $162M aggregate) and timing is enforcement-increasing, but solution landscape is mediocre (FlyFin has OnlyFans landing page; specialist CPA firms exist). Missing condition for VALIDATED: user research confirming FlyFin is inadequate for adult creators.",
+  "queries_composed": 12,
+  "queries_supporting": 7,
+  "queries_challenging": 5,
+  "fetches_attempted": 0,
+  "events_final": 8,
+  "events_supporting": 5,
+  "events_challenging": 3,
+  "primary_source_ratio": "75%",
+  "unfairgap_fit": {
+    "pain_is_systemic": true,
+    "pain_events_count": 5,
+    "pain_cross_company": "3 named individuals + thousands unnamed",
+    "pain_cross_jurisdiction": "federal + Florida + Ohio + Arizona",
+    "pain_is_repeating": "growing",
+    "solution_adequacy": "mediocre",
+    "funding_signal": "early-stage only",
+    "regulatory_trend": "enforcement-increasing",
+    "market_window_signal": "6-18mo"
+  },
+  "solo_founder_fit": "PASS",
+  "evidence_ledger": [
+    {
+      "id": "ev_001",
+      "event_key": "IRS|prosecution|2025-08|Perez|MDFL",
+      "financial_impact": "$1.6M+ unpaid taxes",
+      "source_class": "primary_gov",
+      "url": "https://www.irs.gov/compliance/criminal-investigation/onlyfans-content-creator-charged-with-tax-fraud",
+      "evidence_quality": "hard",
+      "validation_side": "SUPPORTING"
+    },
+    {
+      "id": "ev_002",
+      "event_key": "IRS|sentencing|2026-04|Bossetti|SDOH",
+      "financial_impact": "$12.5M restitution",
+      "source_class": "primary_gov",
+      "url": "https://www.irs.gov/compliance/criminal-investigation/social-media-influencer-sentenced-to-6-years-in-prison-for-20-million-ponzi-scheme-tax-fraud",
+      "evidence_quality": "hard",
+      "validation_side": "SUPPORTING"
+    },
+    {
+      "id": "ev_003",
+      "event_key": "IRS|penalties|2025-09|social-media-creators",
+      "financial_impact": "$162M aggregate",
+      "source_class": "primary_gov",
+      "url": "https://www.irs.gov/newsroom/irs-assesses-162-million-in-penalties-over-false-tax-credit-claims-tied-to-social-media",
+      "evidence_quality": "hard",
+      "validation_side": "SUPPORTING"
+    },
+    {
+      "id": "ev_004",
+      "event_key": "DOJ|indictment|2026-04|Davis|USAO-AZ",
+      "financial_impact": "$1.2M hidden income",
+      "source_class": "primary_gov",
+      "url": "https://www.justice.gov/usao-az/pr/social-media-influencer-indicted-evading-taxes-making-false-statements-his-tax-returns",
+      "evidence_quality": "hard",
+      "validation_side": "SUPPORTING"
+    },
+    {
+      "id": "ev_005",
+      "event_key": "IRS|guidance|2025-09|no-tips-adult-exclusion",
+      "financial_impact": "$25K/yr deduction denied",
+      "source_class": "primary_gov",
+      "url": "https://www.irs.gov",
+      "evidence_quality": "hard",
+      "validation_side": "SUPPORTING"
+    },
+    {
+      "id": "ev_006",
+      "event_key": "IRS|policy|2026|1099-K-reversal",
+      "financial_impact": null,
+      "source_class": "primary_gov",
+      "url": "https://www.irs.gov/newsroom/irs-issues-faqs-on-form-1099-k-threshold-under-the-one-big-beautiful-bill-dollar-limit-reverts-to-20000",
+      "evidence_quality": "hard",
+      "validation_side": "CHALLENGING"
+    },
+    {
+      "id": "ev_007",
+      "event_key": "competitor|SaaS|2025-2026|FlyFin",
+      "financial_impact": null,
+      "source_class": "secondary_news",
+      "url": "https://flyfin.tax/freelancer-profession-deductions/onlyfans-taxes",
+      "evidence_quality": "soft",
+      "validation_side": "CHALLENGING"
+    },
+    {
+      "id": "ev_008",
+      "event_key": "competitor|CPA|2025|OFCPA-MonacoCPA",
+      "financial_impact": null,
+      "source_class": "secondary_news",
+      "url": "https://ofcpa.pro/",
+      "evidence_quality": "soft",
+      "validation_side": "CHALLENGING"
+    }
+  ],
+  "coverage_gaps": [
+    "FlyFin adequacy unconfirmed — has OnlyFans landing page but adult-specific features unknown",
+    "Middle-income creator prosecutions ($50K-$200K) not found — named cases all $1M+",
+    "FlyFin funding/ARR not found",
+    "1099-NEC (OnlyFans actual form) vs 1099-K threshold distinction critical for positioning"
+  ],
+  "report_file": "validation-onlyfans-creator-tax-saas-US-2026-05-16.md"
+}
