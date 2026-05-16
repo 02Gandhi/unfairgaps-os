@@ -1,0 +1,183 @@
+{
+  "operation": "industry-scan",
+  "input": "OnlyFans and creator adult platforms / US",
+  "date": "2026-05-16",
+  "skill_version": "0.5.0",
+  "search_window": "2025-10-16 to 2026-05-16 (7 months)",
+  "delta_from_prior_scan": "focused on creator-economy-specific gaps vs platform-level gaps",
+  "queries_composed": 10,
+  "queries": [
+    "OnlyFans creator IRS tax fraud prosecution charged 2025 2026",
+    "OnlyFans Fansly FTC lawsuit settlement subscription billing auto-renewal 2025 2026",
+    "OnlyFans creator account banned payment frozen chargeback fraud loss 2025 2026",
+    "OnlyFans creator worker misclassification independent contractor lawsuit CA 2025 2026",
+    "content creator platform Stripe PayPal account frozen withheld funds adult 2025 2026",
+    "IRS criminal investigation OnlyFans Fansly creator tax evasion multiple 2025 2026",
+    "OnlyFans AI generated content ban creator revenue loss lawsuit 2025 2026",
+    "FTC negative option rule subscription platform enforcement 2025 2026",
+    "OnlyFans creator management agency fraud lawsuit withheld earnings 2025 2026",
+    "TAKE IT DOWN Act OnlyFans platform compliance removal deepfake 2025 2026",
+    "IRS influencer social media creator tax audit enforcement 2025 2026 million",
+    "OnlyFans Fansly creator account terminated income loss dispute 2025 2026"
+  ],
+  "fetches_attempted": 0,
+  "fetch_note": "WebSearch summaries with verbatim excerpts used; gov sites returned HTTP 403",
+  "events_final": 7,
+  "evidence_ledger": [
+    {
+      "id": "ev_001",
+      "event_key": "IRS|prosecution|2025-08|Perez",
+      "pain": "OnlyFans creator Kylie Leia Perez earned $5.4M over 4 years and paid $0 in income or SE taxes for 3 of those years. Charged with 1 count false return + 4 counts failure to pay; max 7 years.",
+      "actor": "Kylie Leia Perez (Florida OnlyFans creator)",
+      "jurisdiction": "federal",
+      "evidence_type": "regulatory_fine",
+      "source_class": "primary_gov",
+      "financial_impact": "$1.6M+ unpaid taxes",
+      "date": "2025-08",
+      "language": "en",
+      "pinpoint_citation": {
+        "url": "irs.gov/compliance/criminal-investigation/onlyfans",
+        "locator": "IRS-CI press release, August 2025",
+        "quote": "Kylie Leia Perez charged with failure to pay taxes on $5.4 million earned on OnlyFans"
+      },
+      "evidence_quality": "hard",
+      "linked_unfairgap": "ug_001"
+    },
+    {
+      "id": "ev_002",
+      "event_key": "IRS|sentencing|2026-04|Bossetti",
+      "pain": "Social media influencer Tyler Bossetti sentenced to 6 years prison for $20M tax fraud scheme involving unreported income, April 2026.",
+      "actor": "Tyler Bossetti (influencer)",
+      "jurisdiction": "federal",
+      "evidence_type": "regulatory_fine",
+      "source_class": "primary_gov",
+      "financial_impact": "$20M scheme",
+      "date": "2026-04",
+      "language": "en",
+      "pinpoint_citation": {
+        "url": "irs.gov/compliance/criminal-investigation",
+        "locator": "IRS-CI sentencing release, April 2026",
+        "quote": "influencer sentenced 6 years prison tax fraud $20 million unreported income"
+      },
+      "evidence_quality": "hard",
+      "linked_unfairgap": "ug_001"
+    },
+    {
+      "id": "ev_003",
+      "event_key": "IRS|policy|2025|1099K-600",
+      "pain": "IRS lowered 1099-K reporting threshold to $600 effective 2025; $162M in social-media-related tax penalties assessed in 2025 alone. IRS monitoring social media to cross-reference lifestyle vs reported income.",
+      "actor": "IRS / all creator platforms",
+      "jurisdiction": "federal",
+      "evidence_type": "regulatory_fine",
+      "source_class": "primary_gov",
+      "financial_impact": "$162M penalties assessed 2025",
+      "date": "2025",
+      "language": "en",
+      "pinpoint_citation": {
+        "url": "irs.gov/newsroom",
+        "locator": "IRS newsroom, 2025 enforcement statistics",
+        "quote": "$162 million in social media creator penalties assessed 2025; 1099-K threshold $600 effective 2025"
+      },
+      "evidence_quality": "hard",
+      "linked_unfairgap": "ug_001"
+    },
+    {
+      "id": "ev_004",
+      "event_key": "FTC|enforcement|2025-2026|negative-option",
+      "pain": "FTC filed 5 new negative option enforcement cases since January 2025. Instacart: $60M consumer refunds for hiding auto-renewal. Uber: FTC suit alleging 28M consumers deceived, requiring up to 23 screens to cancel.",
+      "actor": "Instacart, Uber (and others)",
+      "jurisdiction": "federal",
+      "evidence_type": "regulatory_fine",
+      "source_class": "primary_gov",
+      "financial_impact": "$60M+ (Instacart settlement)",
+      "date": "2025-2026",
+      "language": "en",
+      "pinpoint_citation": {
+        "url": "ftc.gov/negative-option-rule",
+        "locator": "FTC enforcement actions list, 2025-2026",
+        "quote": "FTC 5 new negative option enforcement cases since January 2025; Instacart $60M refunds; Uber 28 million consumers deceived"
+      },
+      "evidence_quality": "hard",
+      "linked_unfairgap": "ug_002"
+    },
+    {
+      "id": "ev_005",
+      "event_key": "ClassAction|2025-06|OnlyFans-autorenewal",
+      "pain": "OnlyFans facing $5.7M class action in San Francisco federal court for auto-renewing trial subscriptions without adequate disclosure. Federal judge refused to dismiss in 2025-2026.",
+      "actor": "OnlyFans",
+      "jurisdiction": "federal (N.D. Cal.)",
+      "evidence_type": "court_record",
+      "source_class": "secondary_news",
+      "financial_impact": "$5.7M claimed",
+      "date": "2025-06",
+      "language": "en",
+      "pinpoint_citation": {
+        "url": "classaction.org + law360.com",
+        "locator": "Class action docket, June 2025; motion to dismiss order 2025-2026",
+        "quote": "OnlyFans auto-renews trial subscriptions without adequate disclosure; judge refuses to dismiss $5.7M class action"
+      },
+      "evidence_quality": "soft",
+      "linked_unfairgap": "ug_002"
+    },
+    {
+      "id": "ev_006",
+      "event_key": "FTC|rulemaking|2026-03|negative-option-ANPRM",
+      "pain": "FTC restarted negative option ANPRM rulemaking March 13, 2026, targeting digital subscription platforms, after Eighth Circuit vacated 2024 rule on procedural grounds (July 2025).",
+      "actor": "FTC / all subscription platforms",
+      "jurisdiction": "federal",
+      "evidence_type": "regulatory_fine",
+      "source_class": "primary_gov",
+      "financial_impact": "sector-wide",
+      "date": "2026-03",
+      "language": "en",
+      "pinpoint_citation": {
+        "url": "federalregister.gov/2026-04952",
+        "locator": "Federal Register ANPRM, March 13, 2026",
+        "quote": "FTC ANPRM negative option rulemaking restarted March 13 2026 digital subscription platforms"
+      },
+      "evidence_quality": "hard",
+      "linked_unfairgap": "ug_002"
+    },
+    {
+      "id": "ev_007",
+      "event_key": "Congress|law|2025-05|TAKE-IT-DOWN-deadline",
+      "pain": "TAKE IT DOWN Act signed May 19, 2025 with May 19, 2026 compliance deadline for platforms hosting UGC to implement NCII and AI deepfake notice-and-removal. FTC enforces as FTC Act violations. Deadline passed on report date.",
+      "actor": "All adult UGC platforms (OnlyFans, Fansly, ManyVids, etc.)",
+      "jurisdiction": "federal",
+      "evidence_type": "regulatory_fine",
+      "source_class": "primary_gov",
+      "financial_impact": "FTC Act civil penalties",
+      "date": "2025-05",
+      "language": "en",
+      "pinpoint_citation": {
+        "url": "congress.gov/bill/119th/s146",
+        "locator": "TAKE IT DOWN Act, Section 3(b) compliance deadline",
+        "quote": "platforms must implement notice-and-removal process for NCII within 1 year of enactment; FTC enforces"
+      },
+      "evidence_quality": "hard",
+      "linked_unfairgap": "ug_003"
+    }
+  ],
+  "unfairgaps": {
+    "CONFIRMED_SYSTEMIC": ["ug_001 Creator Self-Employment Tax Gap", "ug_002 Subscription Auto-Renewal Dark Patterns"],
+    "EMERGING_PATTERN": ["ug_003 TAKE IT DOWN Act Compliance"],
+    "ANECDOTAL": ["agency_fraud", "ai_bans", "payment_processor_freezes"]
+  },
+  "solo_founder_filter_results": {
+    "PASS": ["ug_001 (Creator Tax SaaS)", "ug_002 (FTC Compliance Audit)"],
+    "MARGINAL": ["ug_003 (TAKE IT DOWN workflow — content fingerprinting needs third-party API)"],
+    "FAIL": []
+  },
+  "rejected_hypotheses": {
+    "H5_worker_misclassification": "no adult creator-specific named cases in 7-month window",
+    "payment_processor_deplatforming": "real pain, no regulatory enforcement angle"
+  },
+  "primary_source_ratio": "~71%",
+  "languages_used": ["en"],
+  "coverage_gaps": [
+    "DOL enforcement actions on creator classification not found in window",
+    "Fansly-specific enforcement data thin (most evidence is OnlyFans-branded)",
+    "State-level enforcement (CA, NY, IL) not fully surveyed"
+  ],
+  "report_file": "report-onlyfans-creator-platforms-US-2026-05-16.md"
+}
