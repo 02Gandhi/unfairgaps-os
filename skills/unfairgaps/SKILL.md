@@ -73,9 +73,9 @@ Compose queries across these categories (expanded in v0.3 after empirical gap-an
 
 - 2 REGULATORY FINES (agency + specific pain + year)
 - 2 LEGAL CASES (lawsuits, settlements, class actions)
-- 2 JURY VERDICTS (8-figure + jury awards, "verdict million {industry} 2024 2025")
+- 2 JURY VERDICTS (8-figure + jury awards, "verdict million {industry} {YEAR_RANGE}")
 - 2 REPEAT VIOLATOR / SVEP (for US: "SVEP {industry}", "repeat violator"; other countries: equivalent)
-- 1 BANKRUPTCY / CHAPTER 7 ("{industry} contractor Chapter 7 bankruptcy 2024 2025")
+- 1 BANKRUPTCY / CHAPTER 7 ("{industry} contractor Chapter 7 bankruptcy {YEAR_RANGE}")
 - 1 AGGREGATOR HUNT ("biggest OSHA fines {year}", "top {industry} lawsuits {year}" — aggregator sites pre-curate primary-source lists)
 - 1 INDUSTRY COST (reports, losses, financial impact)
 - 1 SPECIFIC INCIDENT (single high-$ event with known name)
@@ -84,7 +84,7 @@ Compose queries across these categories (expanded in v0.3 after empirical gap-an
 **Query rules:**
 - Include the target noun verbatim (industry / segment / pain / whatever the op focuses on)
 - Include at least one financial keyword (lawsuit, fine, penalty, settlement, million, cost, loss, verdict, Chapter 7 — or native-language equivalent)
-- Include year range `2024 2025 2026`
+- Include only dates from the **last 7 months** (compute: today minus 7 months). Use only the calendar years covered by that window in query strings. Do not include years before the cutoff.
 - **Native-language queries are mandatory** for non-English countries. English-only = fake "no evidence".
 - At least 2 queries target `.gov` / regulator / court-system sources explicitly
 - **v0.3 lesson:** if the first pass returns penalty tables / code articles rather than named-party events, that's a diagnostic signal — immediately compose follow-ups with action-verb markers.
@@ -152,7 +152,7 @@ For each candidate pattern, emit an `UNFAIRGAP` entry:
   product_sketch:
     what: "<concrete product, 1-2 sentences>"
     who_pays: "<specific buyer persona — NOT the sanctioned companies, their NOT-YET-SANCTIONED peers>"
-    why_now: "<what makes this urgent in 2024-2026 specifically>"
+    why_now: "<what makes this urgent in the last 7 months specifically>"
     what_kills_it: "<biggest risk to the wedge>"
     solo_founder_fit: "PASS | FAIL | MARGINAL — see Phase 3.7 criteria"
   coverage_caveats: "<what we don't know that would change the call>"
