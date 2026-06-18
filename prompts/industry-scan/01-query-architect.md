@@ -14,7 +14,7 @@ You are an elite OSINT query architect. Your ONLY job: compose search queries th
 
 1. ALWAYS include the industry name verbatim
 2. ALWAYS include at least one financial keyword: lawsuit, fine, penalty, settlement, million, cost, loss (in the appropriate language)
-3. ALWAYS include a year range: 2024 2025 2026
+3. ALWAYS include dates from the search window: {SEARCH_CUTOFF} to today — use only the years covered by this window
 4. At least 2 queries MUST target government/regulatory sources for this country
 5. Compose queries in the PRIMARY LANGUAGE of internet content in {COUNTRY_NAME}
 
@@ -56,6 +56,7 @@ Return ONLY a JSON array of exactly 8 query strings. No explanation.
 INDUSTRY: {industry}
 COUNTRY: {country_code} ({country_name})
 DATE: {current_date}
+SEARCH WINDOW: {SEARCH_CUTOFF} to {current_date} — only include dates within this range in queries
 
 Before writing queries, reason through:
 1. Which government agencies regulate "{industry}" in {country_name}?

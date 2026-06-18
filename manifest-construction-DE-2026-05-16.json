@@ -1,0 +1,62 @@
+{
+  "operation": "industry-scan",
+  "input": {"industry": "construction (Baugewerbe)", "country": "DE"},
+  "date": "2026-05-16",
+  "skill_version": "0.5.0",
+  "queries": [
+    {"q": "Baugewerbe Bußgeld Schwarzarbeit Hauptzollamt Strafe 2024 2025", "lang": "de", "category": "regulatory_fines"},
+    {"q": "BG BAU Arbeitsschutz Verstoß Bußgeld Bauunternehmen verurteilt 2024 2025", "lang": "de", "category": "regulatory_fines"},
+    {"q": "Bauunternehmen Schadensersatz Baumängel Urteil Millionen Euro Gericht 2024 2025", "lang": "de", "category": "legal_cases"},
+    {"q": "Germany construction company lawsuit settlement million euros penalty 2024 2025", "lang": "en", "category": "legal_cases"},
+    {"q": "Bundeskartellamt Bauunternehmen Bußgeld Preisabsprachen Vergabe 2024 2025", "lang": "de", "category": "regulatory_fines"},
+    {"q": "Bauunternehmen Insolvenz Subunternehmer Forderungsausfall Millionen 2024 2025 Deutschland", "lang": "de", "category": "bankruptcy"},
+    {"q": "Germany construction worker fall accident fine employer liability million 2024 2025", "lang": "en", "category": "verdicts"},
+    {"q": "Zoll Baubranche Kontrolle Schwarzarbeit bundesweit Ergebnisse 2024 2025 Ermittlungen", "lang": "de", "category": "aggregator_hunt"},
+    {"q": "Bauunfall Arbeitsschutz Geldstrafe Bauunternehmen verurteilt Deutschland Gericht 2024 2025", "lang": "de", "category": "repeat_violator"},
+    {"q": "Baumängel BGH Urteil Schadensersatz Bauträger Kosten 2025 2026 Deutschland aktuell", "lang": "de", "category": "industry_cost"},
+    {"q": "site:bundeskartellamt.de Bauunternehmen Bußgeld 2024 2025", "lang": "de", "category": "aggregator_hunt"},
+    {"q": "site:zoll.de Finanzkontrolle Schwarzarbeit Jahresbilanz 2025 Baugewerbe", "lang": "de", "category": "aggregator_hunt"}
+  ],
+  "fetches": {
+    "attempted": 14,
+    "succeeded": 0,
+    "blocked_403": [
+      "zoll.de/jahresbilanz_fks_2025",
+      "bundeskartellamt.de/Zoobruecke_2024",
+      "bundeskartellamt.de/Strassenbau_2025",
+      "zoll.de/x93_organisiertes_ffm",
+      "presseportal.de/HZA_Erfurt",
+      "destatis.de/PD26_085_52411",
+      "verbraucherschutzforum.berlin/millionenstrafen",
+      "handwerk.com/bgh-neu-fuer-alt",
+      "cliffordchance.com/german-antitrust",
+      "immobilien-redaktion.com/104-pleiten",
+      "handwerksblatt.de/schwarzarbeit-bundesweite-kontrolle",
+      "bundesfinanzministerium.de/zoll-bilanz-2024",
+      "bloomberglaw.com/germany-fines-steelmakers",
+      "transatlanticlaw.com/bgh-contractual-penalty"
+    ]
+  },
+  "evidence_ledger": [
+    {"id": "ev_001", "event_key": "FKS|op|2024-03|bundesweit", "source_class": "primary_gov", "financial_impact": null, "linked_ug": "ug_001"},
+    {"id": "ev_002", "event_key": "FKS|op|2025-06|bundesweit", "source_class": "primary_gov", "financial_impact": null, "linked_ug": "ug_001"},
+    {"id": "ev_003", "event_key": "FKS|annual|2025|gesamt", "source_class": "primary_gov", "financial_impact": "~EUR 405M", "linked_ug": "ug_001"},
+    {"id": "ev_004", "event_key": "FKS|network|2025|Frankfurt", "source_class": "primary_gov", "financial_impact": null, "linked_ug": "ug_001"},
+    {"id": "ev_005", "event_key": "BKartA|fine|2025-05|7-Firmen", "source_class": "primary_gov", "financial_impact": "EUR 10500000", "linked_ug": "ug_002"},
+    {"id": "ev_006", "event_key": "BKartA|fine|2024-10|Strabag", "source_class": "primary_gov", "financial_impact": "EUR 2790000", "linked_ug": "ug_002"},
+    {"id": "ev_007", "event_key": "BKartA|fine|2023-12|14-Industriebaufirmen", "source_class": "primary_gov", "financial_impact": "EUR 4800000", "linked_ug": "ug_002"},
+    {"id": "ev_008", "event_key": "Destatis|stats|2025|Bau", "source_class": "primary_gov", "financial_impact": "EUR 47900000000 (gesamt)", "linked_ug": "ug_003"},
+    {"id": "ev_009", "event_key": "news|insolvenz|2025|Metallbau-Früh", "source_class": "secondary_news", "financial_impact": "EUR 6700000", "linked_ug": "ug_003"},
+    {"id": "ev_010", "event_key": "BGH|ruling|2025-11|VII-ZR-112-24", "source_class": "primary_court", "financial_impact": "EUR 3000000 (example)", "linked_ug": "ug_004"},
+    {"id": "ev_011", "event_key": "BGH|ruling|2026-03|VII-ZR-108-24", "source_class": "primary_court", "financial_impact": null, "linked_ug": "ug_004"}
+  ],
+  "unfairgaps": [
+    {"id": "ug_001", "status": "CONFIRMED_SYSTEMIC", "hypothesis": "Schwarzarbeit-Compliance-Lücke bei Nachunternehmer-Ketten", "event_count": 4},
+    {"id": "ug_002", "status": "CONFIRMED_SYSTEMIC", "hypothesis": "Keine automatische Anomalie-Erkennung bei Submissionsabsprachen", "event_count": 3},
+    {"id": "ug_003", "status": "CONFIRMED_SYSTEMIC", "hypothesis": "Fehlende Forderungsabsicherung für Subunternehmer", "event_count": 2},
+    {"id": "ug_004", "status": "EMERGING_PATTERN", "hypothesis": "Fehlende digitale Abnahme-Dokumentation unter verschärfter BGH-Haftung", "event_count": 2}
+  ],
+  "rejected_hypotheses": ["H2 (BG BAU Arbeitsschutz) — Bußgelder max EUR 10K, keine named-company events"],
+  "primary_source_ratio": 0.64,
+  "coverage_gaps": ["German IP-block on all WebFetch", "BG BAU specific enforcement data", "Sub contractor civil claims data", "Regional Bundesland enforcement data"]
+}

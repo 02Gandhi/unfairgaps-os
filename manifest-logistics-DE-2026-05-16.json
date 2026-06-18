@@ -1,0 +1,59 @@
+{
+  "operation": "industry-scan",
+  "input": {"industry": "logistics and transportation", "country": "DE"},
+  "date": "2026-05-16",
+  "skill_version": "0.5.0",
+  "queries": [
+    {"q": "BALM Bundesamt Logistik Mobilität Kontrolle Bußgeld Jahresbericht 2024 2025 Ergebnisse", "lang": "de", "category": "regulatory_fines"},
+    {"q": "Fahrpersonalrecht Lenk Ruhezeiten Bußgeld Unternehmen BALM verurteilt 2024 2025", "lang": "de", "category": "regulatory_fines"},
+    {"q": "LKW Maut Hinterziehung Spediteur Strafanzeige verurteilt Strafe verhängt 2024 2025", "lang": "de", "category": "repeat_violator"},
+    {"q": "Kabotage Verstöße Bußgeld Spediteur verurteilt Deutschland 2024 2025", "lang": "de", "category": "regulatory_fines"},
+    {"q": "Gefahrguttransport ADR Verstoß Bußgeld Transportunternehmen verurteilt Deutschland 2024 2025", "lang": "de", "category": "regulatory_fines"},
+    {"q": "Scheinselbständigkeit Fahrer Spediteur Urteil Nachzahlung Sozialversicherung 2024 2025", "lang": "de", "category": "legal_cases"},
+    {"q": "Spediteur Logistikunternehmen Millionen Strafe Bußgeld Klage verurteilt Deutschland 2024 2025", "lang": "de", "category": "legal_cases"},
+    {"q": "Willi Betz Verurteilung Strafe Millionen Spediteur Stuttgart 2024 2025", "lang": "de", "category": "specific_incident"},
+    {"q": "Logistik Spediteur Insolvenz Forderungsausfall 2024 2025 Millionen Deutschland", "lang": "de", "category": "bankruptcy"},
+    {"q": "Mindestlohn Logistik ausländische Fahrer Zoll Bußgeld Nachzahlung verurteilt 2024 2025", "lang": "de", "category": "regulatory_fines"},
+    {"q": "Zoll Mindestlohn Meldepflicht Logistik Spediteur Bußgeld 2026 Karlsruhe", "lang": "de", "category": "aggregator_hunt"},
+    {"q": "BALM 2024 Kontrollergebnisse Tachograph Manipulation Statistik", "lang": "de", "category": "industry_cost"},
+    {"q": "Lkw Kartell Schadensersatz Spediteure Klage Deutschland Millionen 2024 2025", "lang": "de", "category": "legal_cases"},
+    {"q": "site:balm.bund.de Kontrollergebnisse Bußgeld Fahrtenschreiber 2025", "lang": "de", "category": "aggregator_hunt"}
+  ],
+  "fetches": {
+    "attempted": 0,
+    "succeeded": 0,
+    "blocked_403": ["balm.bund.de", "zoll.de", "bundesgerichtshof.de", "bundeskartellamt.de"]
+  },
+  "evidence_ledger": [
+    {"id": "ev_001", "event_key": "BALM|stats|2024|Kontrollergebnisse", "source_class": "primary_gov", "financial_impact": null, "linked_ug": "ug_001"},
+    {"id": "ev_002", "event_key": "BALM|fine|2025-02|Tachograph-BU", "source_class": "primary_gov", "financial_impact": "EUR 12000", "linked_ug": "ug_001"},
+    {"id": "ev_003", "event_key": "BALM|tech|2025-02|DigitaleKontrollen", "source_class": "primary_gov", "financial_impact": null, "linked_ug": "ug_001"},
+    {"id": "ev_004", "event_key": "BALM|fine|2024|Tachograph-30K", "source_class": "quasi_primary", "financial_impact": "EUR 30000", "linked_ug": "ug_001"},
+    {"id": "ev_005", "event_key": "BALM|op|2024-01|Schwerpunktkontrolle", "source_class": "quasi_primary", "financial_impact": "EUR 110000 (single month)", "linked_ug": "ug_001"},
+    {"id": "ev_006", "event_key": "LG-Stuttgart|verdict|2025|Willi-Betz", "source_class": "secondary_news", "financial_impact": "EUR ~37000000 gesamt", "linked_ug": "ug_002"},
+    {"id": "ev_007", "event_key": "Zoll|fine|2026-01|HZA-KA-Logistik", "source_class": "primary_gov", "financial_impact": "EUR 13000+", "linked_ug": "ug_002"},
+    {"id": "ev_008", "event_key": "FKS|annual|2024|Mindestlohnbußgelder", "source_class": "quasi_primary", "financial_impact": "EUR 25300000 gesamt", "linked_ug": "ug_002"},
+    {"id": "ev_009", "event_key": "Zoll|fine|2024|Kurierdienst-200K", "source_class": "primary_gov", "financial_impact": "EUR 200000+", "linked_ug": "ug_002"},
+    {"id": "ev_010", "event_key": "BGH|ruling|2025-12|KZR-6-24-Lkw", "source_class": "primary_court", "financial_impact": "EUR 1300000000+ ausstehend", "linked_ug": "ug_004"},
+    {"id": "ev_011", "event_key": "Destatis|stats|2025|Logistik-Insolvenz", "source_class": "primary_gov", "financial_impact": "EUR 3800000000+ Gläubiger Okt 2024", "linked_ug": "ug_003"},
+    {"id": "ev_012", "event_key": "SG-Dortmund|verdict|2025|Scheinselbst-Paket", "source_class": "primary_court", "financial_impact": null, "linked_ug": "ug_002"}
+  ],
+  "unfairgaps": [
+    {"id": "ug_001", "status": "CONFIRMED_SYSTEMIC", "hypothesis": "Fahrpersonalrecht-Compliance-Lücke: Tachograph-Manipulation und Lenk/Ruhezeiten-Verstöße unter BALM-Sensor-Enforcement", "event_count": 5},
+    {"id": "ug_002", "status": "CONFIRMED_SYSTEMIC", "hypothesis": "MiLoG/Sozialabgaben-Compliance-Lücke bei ausländischen Fahrern und Subunternehmer-Ketten", "event_count": 5},
+    {"id": "ug_003", "status": "CONFIRMED_SYSTEMIC", "hypothesis": "Fehlende Forderungsabsicherung für Frachtführer bei Auftraggeber-Insolvenz (höchste Insolvenzrate aller Sektoren)", "event_count": 2},
+    {"id": "ug_004", "status": "EMERGING_PATTERN", "hypothesis": "Lkw-Kartell-Schadensersatz: deutsche Spediteure als ungenutzter Anspruchsinhaber", "event_count": 1}
+  ],
+  "rejected_hypotheses": [
+    "H3 Maut-Hinterziehung: OWi max €480, keine named-company Strafverfahren",
+    "H4 Kabotage: nur Bußgeldkataloge, keine Verurteilungen 2024-2025",
+    "H5 Gefahrgut/ADR: Bußgelder max €500-585/Vorfall, nicht produktwürdig"
+  ],
+  "primary_source_ratio": 0.67,
+  "coverage_gaps": [
+    "German IP-block on all WebFetch (403)",
+    "No named-company Kabotage enforcement events",
+    "Gefahrgut company-level enforcement not found",
+    "Lenk/Ruhezeiten company-aggregate fine data not accessible"
+  ]
+}

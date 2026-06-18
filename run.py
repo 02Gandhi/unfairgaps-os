@@ -7,7 +7,7 @@ import os
 import sys
 import time
 from pathlib import Path
-from datetime import date
+from datetime import date, timedelta
 
 import httpx
 
@@ -21,7 +21,8 @@ SONAR_URL = "https://api.perplexity.ai/chat/completions"
 PROMPTS_DIR = Path(__file__).parent / "prompts"
 
 CLAUDE_MODEL = "anthropic/claude-sonnet-4-6"
-SONAR_MODEL = "sonar-reasoning-pro"
+SONAR_MODEL = "sonar-deep-research"
+SEARCH_MONTHS = 7  # Only surface articles published in the last N months
 
 COUNTRY_NAMES = {
     "US": "United States", "DE": "Germany", "KZ": "Kazakhstan", "RU": "Russia",
@@ -124,7 +125,7 @@ def call_claude(system: str, user: str, max_tokens: int = 2000, temp: float = 0.
     return extract_text(data)
 
 
-def call_sonar(system: str, user: str, max_tokens: int = 3000) -> dict:
+def call_sonar(system: str, user: str, max_tokens: int = 8000) -> dict:
     """Call Sonar via Perplexity Chat Completions. Returns {text, citations}."""
     r = httpx.post(
         SONAR_URL,
@@ -132,8 +133,9 @@ def call_sonar(system: str, user: str, max_tokens: int = 3000) -> dict:
         json={"model": SONAR_MODEL, "messages": [
             {"role": "system", "content": system},
             {"role": "user", "content": user},
-        ], "max_tokens": max_tokens, "return_citations": True},
-        timeout=120,
+        ], "max_tokens": max_tokens, "return_citations": True,
+           "search_after_date_filter": (date.today() - timedelta(days=SEARCH_MONTHS * 30)).isoformat()},
+        timeout=300,
     )
     r.raise_for_status()
     data = r.json()
@@ -235,9 +237,10 @@ def pipeline_industry_scan(industry: str, country: str):
     ctx = country_context(country)
 
     # Step 1: Query Architect
+    search_cutoff = date.today() - timedelta(days=SEARCH_MONTHS * 30)
     step("Step 1/5: Composing search queries", f"{industry} in {country_name}")
-    sys_prompt = load_prompt("industry-scan/01-query-architect.md").replace("{COUNTRY_CONTEXT}", ctx).replace("{COUNTRY_NAME}", country_name)
-    user_prompt = f"INDUSTRY: {industry}\nCOUNTRY: {country} ({country_name})\nDATE: {date.today()}\n\nBefore writing queries, reason through:\n1. Which government agencies regulate \"{industry}\" in {country_name}?\n2. What are the 3 most expensive problems in \"{industry}\" in {country_name}?\n3. What specific incidents generate court records or enforcement actions?\n4. What would a journalist or lawyer search to find these cases?"
+    sys_prompt = load_prompt("industry-scan/01-query-architect.md").replace("{COUNTRY_CONTEXT}", ctx).replace("{COUNTRY_NAME}", country_name).replace("{SEARCH_CUTOFF}", search_cutoff.isoformat())
+    user_prompt = f"INDUSTRY: {industry}\nCOUNTRY: {country} ({country_name})\nDATE: {date.today()}\nSEARCH WINDOW: {search_cutoff} to {date.today()} (last {SEARCH_MONTHS} months only — do not include years before {search_cutoff.year})\n\nBefore writing queries, reason through:\n1. Which government agencies regulate \"{industry}\" in {country_name}?\n2. What are the 3 most expensive problems in \"{industry}\" in {country_name}?\n3. What specific incidents generate court records or enforcement actions?\n4. What would a journalist or lawyer search to find these cases?"
     queries_raw = call_claude(sys_prompt, user_prompt, max_tokens=800, temp=0.4)
     queries = parse_json(queries_raw)
     if not queries:

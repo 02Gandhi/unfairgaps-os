@@ -1,0 +1,59 @@
+{
+  "operation": "industry-scan",
+  "input": {"industry": "online adult entertainment", "country": "US"},
+  "date": "2026-05-16",
+  "skill_version": "0.5.0",
+  "queries": [
+    {"q": "online adult entertainment company FTC DOJ fine penalty lawsuit 2024 2025", "lang": "en", "category": "regulatory_fines"},
+    {"q": "adult website age verification law violation fine lawsuit state 2024 2025", "lang": "en", "category": "legal_cases"},
+    {"q": "18 USC 2257 record keeping adult entertainment violation prosecution 2024 2025", "lang": "en", "category": "regulatory_fines"},
+    {"q": "Texas attorney general sues pornography company age verification HB1181 2024 2025", "lang": "en", "category": "specific_incident"},
+    {"q": "Pornhub Aylo CSAM lawsuit settlement fine million 2024 2025", "lang": "en", "category": "specific_incident"},
+    {"q": "adult content platform Mastercard Visa payment processing compliance fine dropped 2024 2025", "lang": "en", "category": "regulatory_fines"},
+    {"q": "FOSTA-SESTA adult platform trafficking lawsuit settlement million 2024 2025", "lang": "en", "category": "legal_cases"},
+    {"q": "OnlyFans creator tax IRS compliance 1099 fine enforcement 2024 2025", "lang": "en", "category": "regulatory_fines"},
+    {"q": "adult entertainment company CSAM lawsuit verdict settlement million 2024 2025", "lang": "en", "category": "jury_verdicts"},
+    {"q": "adult platform performer consent verification upload content ID 2024 2025", "lang": "en", "category": "regulatory_fines"},
+    {"q": "adult entertainment data breach privacy class action settlement 2024 2025", "lang": "en", "category": "legal_cases"},
+    {"q": "state attorney general adult pornography website enforcement SCOTUS 2025 2026", "lang": "en", "category": "aggregator_hunt"},
+    {"q": "AI deepfake pornography law violation fine lawsuit 2024 2025", "lang": "en", "category": "legal_cases"}
+  ],
+  "fetches": {
+    "attempted": 0,
+    "succeeded": 0,
+    "blocked_403": ["ftc.gov", "doj.gov", "texasattorneygeneral.gov", "supremecourt.gov"]
+  },
+  "evidence_ledger": [
+    {"id": "ev_001", "event_key": "FTC|fine|2025-09|Aylo", "source_class": "primary_gov", "financial_impact": "USD 5000000 + USD 15000000 suspended", "linked_ug": ["ug_001", "ug_002"]},
+    {"id": "ev_002", "event_key": "TX-AG|lawsuit|2024-02|Aylo-HB1181", "source_class": "primary_gov", "financial_impact": "USD 10000/day exposure", "linked_ug": "ug_002"},
+    {"id": "ev_003", "event_key": "TX-AG|lawsuit|2024-03|xHamster-Chaturbate", "source_class": "primary_gov", "financial_impact": "USD 10000/day each", "linked_ug": "ug_002"},
+    {"id": "ev_004", "event_key": "SCOTUS|ruling|2025-06|FreeSpeech-v-Paxton", "source_class": "primary_court", "financial_impact": null, "linked_ug": "ug_002"},
+    {"id": "ev_005", "event_key": "Congress|law|2025-05|TAKE-IT-DOWN-Act", "source_class": "primary_gov", "financial_impact": "criminal + civil", "linked_ug": "ug_003"},
+    {"id": "ev_006", "event_key": "IRS|prosecution|2025-08|OnlyFans-creator", "source_class": "primary_gov", "financial_impact": "criminal charges", "linked_ug": "anecdotal"},
+    {"id": "ev_007", "event_key": "FL-AG|lawsuit|2025|platforms-age-verify", "source_class": "primary_gov", "financial_impact": "civil penalties", "linked_ug": "ug_002"},
+    {"id": "ev_008", "event_key": "NC|law|2025-12|HB805-performer-consent", "source_class": "primary_gov", "financial_impact": "per-violation civil", "linked_ug": "ug_001"},
+    {"id": "ev_009", "event_key": "Mastercard|rule|2025|VAMP-performer-verify", "source_class": "quasi_primary", "financial_impact": "loss of payment rails", "linked_ug": "ug_001"},
+    {"id": "ev_010", "event_key": "OnlyFans|class-action|2024|BIPA", "source_class": "secondary_news", "financial_impact": "USD 1000-5000 per class member", "linked_ug": "anecdotal"},
+    {"id": "ev_011", "event_key": "Senate|act|2026-01|DEFIANCE-Act", "source_class": "primary_gov", "financial_impact": "USD 150000-250000 per violation", "linked_ug": "ug_003"}
+  ],
+  "unfairgaps": [
+    {"id": "ug_001", "status": "CONFIRMED_SYSTEMIC", "hypothesis": "Performer consent + §2257 + Mastercard VAMP all require identical records; no unified B2B SaaS tool exists", "event_count": 3, "solo_founder_fit": "PASS"},
+    {"id": "ug_002", "status": "CONFIRMED_SYSTEMIC", "hypothesis": "25+ state AVPA laws post-SCOTUS with distinct requirements; no compliance orchestration layer exists", "event_count": 4, "solo_founder_fit": "MARGINAL"},
+    {"id": "ug_003", "status": "CONFIRMED_SYSTEMIC", "hypothesis": "TAKE IT DOWN Act 48-hr mandate + DEFIANCE Act damages require NCII removal compliance workflow platforms don't have", "event_count": 3, "solo_founder_fit": "MARGINAL"},
+    {"id": "ug_004", "status": "EMERGING_PATTERN", "hypothesis": "Adult creator tax non-compliance; IRS enforcement on creator economy", "event_count": 1, "solo_founder_fit": "PASS"}
+  ],
+  "rejected_hypotheses": [
+    "H1 §2257 direct prosecution: no named 2024-2025 DOJ enforcement cases",
+    "H4 FOSTA-SESTA new civil settlements: no major new cases post-2022",
+    "H_performer_misclassification: no adult-specific named cases"
+  ],
+  "out_of_scope_solo": [
+    "CSAM detection platform: requires NCMEC institutional partnership + ML — not solo-buildable"
+  ],
+  "primary_source_ratio": 0.73,
+  "coverage_gaps": [
+    "Direct fetch blocked (403) on ftc.gov, doj.gov, state AG sites",
+    "Adult performer labor misclassification cases not found",
+    "FOSTA civil suits post-2022 not captured"
+  ]
+}
